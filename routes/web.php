@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route; Use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListBarangController;
+use App\Http\Controllers\logincontroller;
 
 route::get('/listbarang/{id}/{nama}', [ListBarangController::class, 'tampilkan']);
+route::get('/dashboard', [DashboardController::class, 'index']);
+route::get('/login', [logincontroller::class, 'index']);
 
 route::prefix('admin')->group (function () {
     Route::get('/dashboard', function () {
