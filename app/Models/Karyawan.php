@@ -6,12 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Karyawan extends Model
 {
+    // Nama tabel di database
+    protected $table = 'karyawans'; 
+
+    // Kolom yang boleh diisi
     protected $fillable = [
-        'nip',
-        'nama',
-        'email',
-        'jabatan',
-        'divisi',
-        'password'
+        'nik', 
+        'nama_karyawan', 
+        'email', 
+        'password', 
+        'divisi', 
+        'jabatan', 
+        'jenis_kelamin', 
+        'status', 
+        'role'
     ];
 }

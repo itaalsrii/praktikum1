@@ -5,6 +5,14 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DivisiDashboardController;
+
+Route::prefix('divisi')->name('divisi.')->group(function () {
+    Route::get('/dashboard', [DivisiDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/karyawan', [DivisiDashboardController::class, 'karyawan'])->name('karyawan');
+    Route::get('/data-kehadiran', [DivisiDashboardController::class, 'kehadiran'])->name('kehadiran'); // Tambahkan ini
+    Route::get('/data-perizinan', [DivisiDashboardController::class, 'perizinan'])->name('perizinan');
+});
 
 Route::get('/products', [ProductController::class, 'index']);
 
@@ -19,8 +27,13 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout']);
 
+Route::post('/logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect('/login'); // Arahkan kembali ke halaman login
+})->name('logout');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth');

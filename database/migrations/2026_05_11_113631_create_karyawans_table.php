@@ -9,21 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-   public function up(): void
-{
+    public function up(): void
+    {
     Schema::create('karyawans', function (Blueprint $table) {
         $table->id();
         $table->string('nik')->unique();
         $table->string('nama_karyawan');
-        $table->string('email')->unique();
-        $table->string('jabatan');
         $table->string('divisi');
+        $table->string('jabatan');
         $table->string('jenis_kelamin');
         $table->string('status');
         $table->string('role');
         $table->timestamps();
     });
-}
+    }
     /**
      * Reverse the migrations.
      */
