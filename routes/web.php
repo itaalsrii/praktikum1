@@ -6,7 +6,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DivisiDashboardController;
+use App\Http\Controllers\ListProdukController;
 
+
+Route::get('/listproduk', [ListProdukController::class, 'show'] );
 Route::prefix('divisi')->name('divisi.')->group(function () {
     Route::get('/dashboard', [DivisiDashboardController::class, 'index'])->name('dashboard');
     Route::get('/karyawan', [DivisiDashboardController::class, 'karyawan'])->name('karyawan');
