@@ -10,6 +10,7 @@ use App\Http\Controllers\ListProdukController;
 
 
 Route::get('/listproduk', [ListProdukController::class, 'show'] );
+Route::post('/listproduk', [ListProdukController::class, 'simpan'])->name('produk.simpan');
 Route::prefix('divisi')->name('divisi.')->group(function () {
     Route::get('/dashboard', [DivisiDashboardController::class, 'index'])->name('dashboard');
     Route::get('/karyawan', [DivisiDashboardController::class, 'karyawan'])->name('karyawan');
